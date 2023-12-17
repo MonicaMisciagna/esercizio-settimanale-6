@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BackOffice</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalnia:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="assets/js/scriptBack.js"></script>
+</head>
+<body class="">
+    <header>
+        <nav class="navbar bg-body-light">
+            <div class="container">
+                <a class="navbar-brand fw-semibold " href="home.html">
+                    <img src="assets/img/—Pngtree—vinyl records_1302106.png" alt="logo" width="150" height="130">
+                    PUSHIN'Vynils
+                </a>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid text-center p-5">
+        <h3>BACK OFFICE</h3>
+    </div>
+    <div class="container">
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+        Nuovo Prodotto 
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+      <div class="accordion-body">
+        <div class="container mt-4 pb-4 pinki text-center rounded">
+          <h2 class="p-4">Nuovo prodotto</h2>
+          <form id="newProductForm" class="text-center row">
+              <div class="mb-3 d-flex justify-content-center row">
+                  <div class="col-2"></div>
+                  <label for="newProductName" class="form-label col" placeholder="Nome">Nome</label>
+                  <input type="text" class="form-control w-25 col" id="newProductName" required>
+                  <div class="col-2"></div>
+              </div>
+              <div class="mb-3 d-flex justify-content-center row">
+                  <div class="col-2"></div>
+                  <label for="newProductDescription" class="form-label col" placeholder="Descrizione">Descrizione</label>
+                  <textarea class="form-control w-25 col" id="newProductDescription" required></textarea>
+                  <div class="col-2"></div>
+              </div>
+              <div class="mb-3 d-flex justify-content-center row">
+                  <div class="col-2"></div>
+                  <label for="newImgUrl" class="form-label col" placeholder="Link immagine">Link dell'immagine</label>
+                  <input class="form-control w-25 col" id="newImgUrl" required>
+                  <div class="col-2"></div>
+              </div>
+              <div class="mb-3 d-flex justify-content-center  row">
+                  <div class="col-2"></div>
+                  <label for="newBrand" class="form-label col" placeholder="Brand">Brand</label>
+                  <input class="form-control w-25 col" id="newBrand" required>
+                  <div class="col-2"></div>
+              </div>
+              <div class="mb-3 d-flex justify-content-center  row">
+                  <div class="col-2"></div>
+                  <label for="newPrice" class="form-label col" placeholder="Prezzo">Prezzo</label>
+                  <input class="form-control w-25 col" id="newPrice" required>
+                  <div class="col-2"></div>
+              </div>
+              <div class="d-flex justify-content-center">
+                  <button id="submitBtn" type="submit" class="btn btn-primary m-2">Inserisci</button>
+                  <button type="reset" class="btn btn-outline-dark m-2">Cancella</button>
+              </div>
+          </form>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+        Modifica prodotto
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+      <div class="accordion-body">
+        <div class="container-fluid text-center p-5">
+          <h3>CHARTS PRODOTTI</h3>
+          <div class="container-fluid pinki d-flex flex-wrap row prod"></div>
+          
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal for Product Update -->
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateModalLabel">Modifica Prodotto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="updateForm">
+          <!-- Your form fields for updating the data go here -->
+          <!-- For example, you can have input fields for name, description, etc. -->
+          <!-- Make sure to add appropriate IDs and placeholders -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+        <button type="button" class="btn btn-primary" id="updateBtn">Salva modifiche</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <footer class="bg-body-light text-center text-lg-start footer fixed-bottom">
+        <div class="text-center p-3">
+            <p>© 2023 Copyright</p>
+        </div>
+    </footer>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>  
+</body>
+</html>
