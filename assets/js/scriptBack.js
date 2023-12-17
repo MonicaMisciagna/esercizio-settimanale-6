@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   let productId;
 
-  const apiUrl = 'https://striveschool-api.herokuapp.com/api/product/';
+let apiUrl = 'https://striveschool-api.herokuapp.com/api/product/';
 
   fetch(apiUrl, {
     method: 'GET',
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   })
     .then(response => response.json())
     .then(products => {
-      const container = document.querySelector('.prod');
+let container = document.querySelector('.prod');
 
       products.forEach(product => {
         let template = `
@@ -32,16 +32,16 @@ document.addEventListener('DOMContentLoaded', function () {
         container.innerHTML += template;
       });
 
-      // Open Modal Button Click Event
-      const openUpdateModalButtons = document.querySelectorAll('.openUpdateModalBtn');
+
+      let openUpdateModalButtons = document.querySelectorAll('.openUpdateModalBtn');
       openUpdateModalButtons.forEach(openUpdateModalButton => {
         openUpdateModalButton.addEventListener('click', function () {
           productId = this.getAttribute('data-product-id');
           console.log('Product ID for update:', productId);
 
-          const product = products.find(p => p._id === productId);
+let product = products.find(p => p._id === productId);
 
-          const updateForm = document.getElementById('updateForm');
+let updateForm = document.getElementById('updateForm');
           updateForm.innerHTML = `
             <label for="updateProductName">Nome</label>
             <input type="text" class="form-control" id="updateProductName" value="${product.name}" required>
@@ -59,31 +59,30 @@ document.addEventListener('DOMContentLoaded', function () {
             <input type="text" class="form-control" id="updatePrice" value="${product.price}" required>
           `;
 
-          const updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
+let updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
           updateModal.show();
         });
       });
 
-      // Update Button Click Event
-      const updateBtn = document.getElementById('updateBtn');
+    
+let updateBtn = document.getElementById('updateBtn');
       updateBtn.addEventListener('click', function () {
-        const updateForm = document.getElementById('updateForm');
-        const updatedProductName = document.getElementById('updateProductName').value;
-        const updatedImageURL = document.getElementById('updateImageURL').value;
-        const updatedDescription = document.getElementById('updateDescription').value;
-        const updatedBrand = document.getElementById('updateBrand').value;
-        const updatedPrice = document.getElementById('updatePrice').value;
+let updateForm = document.getElementById('updateForm');
+let updatedProductName = document.getElementById('updateProductName').value;
+let updatedImageURL = document.getElementById('updateImageURL').value;
+let updatedDescription = document.getElementById('updateDescription').value;
+let updatedBrand = document.getElementById('updateBrand').value;
+let updatedPrice = document.getElementById('updatePrice').value;
 
-        const formData = {
+let formData = {
           name: updatedProductName,
           imageUrl: updatedImageURL,
           description: updatedDescription,
           brand: updatedBrand,
           price: updatedPrice
-          // Add other form fields as needed
+         
         };
 
-        // Esegui una chiamata PUT all'API per aggiornare il prodotto
         fetch(apiUrl + productId, {
           method: 'PUT',
           headers: {
@@ -101,20 +100,20 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error updating product:', error);
           });
 
-        const updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
+let updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
         updateModal.hide();
       });
 
-      // Delete Button Click Event
-      const deleteButtons = document.querySelectorAll('.deleteButton');
+   
+let deleteButtons = document.querySelectorAll('.deleteButton');
       deleteButtons.forEach(deleteButton => {
         deleteButton.addEventListener('click', function (event) {
           event.preventDefault();
 
-          const productId = this.getAttribute('data-id');
+let productId = this.getAttribute('data-id');
           console.log('Product ID for deletion:', productId);
 
-          // Esegui una chiamata DELETE all'API per cancellare il prodotto
+          
           fetch(apiUrl + productId, {
             method: 'DELETE',
             headers: {
@@ -125,8 +124,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => {
               if (response.ok) {
                 console.log('Prodotto cancellato con successo');
-                // Rimuovi l'elemento della card dall'interfaccia utente
-                const cardElement = this.closest('.card');
+              
+let cardElement = this.closest('.card');
                 cardElement.remove();
               } else {
                 console.error('Errore durante la cancellazione del prodotto:', response.status);
@@ -138,21 +137,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
 
-      // Gestione evento di invio del form per il nuovo prodotto
-      const newProductForm = document.getElementById('newProductForm');
+    
+let newProductForm = document.getElementById('newProductForm');
       if (newProductForm) {
         newProductForm.addEventListener('submit', function (event) {
-          event.preventDefault(); // Evita il comportamento predefinito di invio del modulo
+          event.preventDefault();
 
-          // Ottieni i valori dai campi di input del form
-          const productName = document.getElementById('newProductName').value;
-          const productDescription = document.getElementById('newProductDescription').value;
-          const imgUrl = document.getElementById('newImgUrl').value;
-          const brand = document.getElementById('newBrand').value;
-          const price = document.getElementById('newPrice').value;
+let productName = document.getElementById('newProductName').value;
+let productDescription = document.getElementById('newProductDescription').value;
+let imgUrl = document.getElementById('newImgUrl').value;
+let brand = document.getElementById('newBrand').value;
+let price = document.getElementById('newPrice').value;
 
-          // Crea un oggetto con i dati del form
-          const formData = {
+          
+let formData = {
             name: productName,
             description: productDescription,
             imageUrl: imgUrl,
@@ -160,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function () {
             price: price
           };
 
-          // Esegui una chiamata POST all'API per aggiungere un nuovo prodotto
           fetch(apiUrl, {
             method: 'POST',
             headers: {
@@ -172,9 +169,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(newProduct => {
               console.log('Nuovo prodotto aggiunto con successo:', newProduct);
-              // Puoi fare qualcos'altro dopo l'aggiunta del nuovo prodotto, ad esempio aggiornare l'interfaccia utente o reindirizzare l'utente.
+
               location.reload();
-              // Puoi anche ripristinare il form dopo l'inserimento dei dati
               newProductForm.reset();
             })
             .catch(error => {

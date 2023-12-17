@@ -1,7 +1,7 @@
-// URL dell'API da cui recuperare i dati
+
 const apiUrl = 'https://striveschool-api.herokuapp.com/api/product/';
 
-// Effettua la chiamata Fetch GET
+
 const fetchProduct= fetch(apiUrl,{
     method: 'GET',
      headers:  {
